@@ -1,6 +1,5 @@
 package com.nagarro.hrmanager.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.core.ParameterizedTypeReference;
@@ -24,12 +23,11 @@ public class EmployeeService {
 	 */
 	public List<Employee> getEmployees() {
 		final String url = Constants.LIST_URL;
-//		final RestTemplate restTemplate = new RestTemplate();
-//		final ResponseEntity<List<Employee>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null,
-//				new ParameterizedTypeReference<List<Employee>>() {
-//				});
-//		final List<Employee> employees = responseEntity.getBody();
-		final List<Employee> employees = new ArrayList<>();
+		final RestTemplate restTemplate = new RestTemplate();
+		final ResponseEntity<List<Employee>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Employee>>() {
+				});
+		final List<Employee> employees = responseEntity.getBody();
 		return employees;
 	}
 
